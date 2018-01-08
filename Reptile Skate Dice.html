@@ -1,0 +1,104 @@
+<html>
+<head>
+    <title>Reptile Skate Dice</title>
+</head>  
+<body>
+ 
+  <button onclick="GetTrick(0)">Basic Trick</button>
+  <button onclick="GetTrick(1)">Basic + Stance</button>
+  <button onclick="GetTrick(2)">Trick + Spin</button>
+  <button onclick="GetTrick(3)">Trick + Spin + Stance</button>
+  
+  <p id="Trick">Select a difficulty above</p>
+  
+</body>
+</html>
+
+<script>
+var dice = {
+  sides: 4,
+  roll: function () {
+    var randomNumber = Math.floor(Math.random() * this.sides);
+    return randomNumber;
+  }
+}
+
+
+//Prints dice roll to the page
+
+function printTrick(stance,spin,trick) {
+  var Trick = document.getElementById('Trick');
+  Trick.innerHTML = stance+" "+spin+" "+trick;
+}
+
+function GetTrick(difficulty) {
+  var trick = dice.roll();
+  var spin = dice.roll();
+  var stance = dice.roll();
+    
+	switch (stance) {
+    case 0:
+        stance = "";
+        break;
+    case 1:
+		stance = "Switch";
+        break;
+    case 2:
+        stance = "Fakie";
+        break;
+    case 3:
+        stance = "Nollie";
+        break;
+	}
+
+  	switch (spin) {
+    case 0:
+        spin = "FS 360";
+        break;
+    case 1:
+		spin = "BS 360";
+        break;
+    case 2:
+        spin = "FS 180";
+        break;
+    case 3:
+        spin = "BS 180";
+        break;
+	}
+  
+	switch (trick) {
+    case 0:
+        trick = "Ollie";
+        break;
+    case 1:
+        trick = "Kickflip";
+        break;
+    case 2:
+        trick = "Heelflip";
+        break;
+    case 3:
+        trick = "Shuv-it";
+        break;
+	}
+		
+	switch (difficulty) {
+    case 0:
+		//Trick only
+        printTrick(trick,"","");
+        break;
+    case 1:
+		//Trick + stance only
+        printTrick(stance,trick,"");
+        break;
+    case 2:
+		//Trick + Spin
+        printTrick(spin,trick,"");
+        break;
+    case 3:
+		//Stance + Trick + Spin
+        printTrick(stance,spin,trick);
+        break;
+	}
+};
+
+</script>
