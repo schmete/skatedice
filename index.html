@@ -1,0 +1,163 @@
+<html>
+<head>
+    <title>Reptile Skate Dice</title>
+    <link rel="stylesheet" href="style.css">
+</head>  
+<body>
+
+  <button id="Simple_Button">Basic Trick</button>
+  
+  <button id="Intermediate_Button">Intermediate Trick</button>
+  
+ 
+  
+  <button id="Advanced_Button">Advanced Trick</button>
+  
+  
+  <p id="Trick"></p>
+  
+  <script src="dice.js"></script>
+  
+</body>
+</html>
+
+<script>
+var dice = {
+  sides: 4,
+  roll: function () {
+    var randomNumber = Math.floor(Math.random() * this.sides);
+    return randomNumber;
+  }
+}
+
+
+
+//Prints dice roll to the page
+
+function printTrick(stance,spin,trick) {
+  var Dice = document.getElementById('Dice');
+  Trick.innerHTML = stance+" "+spin+" "+trick;
+}
+
+var Simple_button = document.getElementById('Simple_Button');
+
+Simple_Button.onclick = function() {
+  var result = dice.roll();
+  var spin = "1"
+	switch (result) {
+    case 0:
+        trick = "Ollie";
+        break;
+    case 1:
+        trick = "Kickflip";
+        break;
+    case 2:
+        trick = "Heelflip";
+        break;
+    case 3:
+        trick = "Shuv-it";
+        break;
+}
+  printTrick(trick,"","");
+};
+
+
+var Intermediate_Button = document.getElementById('Intermediate_Button');
+
+Intermediate_Button.onclick = function() {
+  var trick = dice.roll();
+  var spin = dice.roll();
+  
+
+  	switch (spin) {
+    case 0:
+        spin = "";
+        break;
+    case 1:
+		spin = "";
+        break;
+    case 2:
+        spin = "FS 180";
+        break;
+    case 3:
+        spin = "BS 180";
+        break;
+	}
+  
+	switch (trick) {
+    case 0:
+        trick = "Ollie";
+        break;
+    case 1:
+        trick = "Kickflip";
+        break;
+    case 2:
+        trick = "Heelflip";
+        break;
+    case 3:
+        trick = "Shuv-it";
+        break;
+	}
+	
+
+  printTrick(spin,trick,"");
+};
+
+
+var Advanced_Button = document.getElementById('Advanced_Button');
+
+Advanced_Button.onclick = function() {
+  var trick = dice.roll();
+  var spin = dice.roll();
+  var stance = dice.roll();
+  
+	switch (stance) {
+    case 0:
+        stance = "";
+        break;
+    case 1:
+		stance = "Switch";
+        break;
+    case 2:
+        stance = "Fakie";
+        break;
+    case 3:
+        stance = "Nollie";
+        break;
+	}
+
+  	switch (spin) {
+    case 0:
+        spin = "FS 360";
+        break;
+    case 1:
+		spin = "BS 360";
+        break;
+    case 2:
+        spin = "FS 180";
+        break;
+    case 3:
+        spin = "BS 180";
+        break;
+	}
+  
+	switch (trick) {
+    case 0:
+        trick = "Ollie";
+        break;
+    case 1:
+        trick = "Kickflip";
+        break;
+    case 2:
+        trick = "Heelflip";
+        break;
+    case 3:
+        trick = "Shuv-it";
+        break;
+	}
+	
+
+  printTrick(stance,spin,trick);
+};
+
+</script>
