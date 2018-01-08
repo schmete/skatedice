@@ -1,22 +1,15 @@
 <html>
 <head>
     <title>Reptile Skate Dice</title>
-    <link rel="stylesheet" href="style.css">
 </head>  
 <body>
-
-  <button id="Simple_Button">Basic Trick</button>
-  
-  <button id="Intermediate_Button">Intermediate Trick</button>
-  
  
+  <button onclick="GetTrick(0)">Basic Trick</button>
+  <button onclick="GetTrick(1)">Basic + Stance</button>
+  <button onclick="GetTrick(2)">Trick + Spin</button>
+  <button onclick="GetTrick(3)">Trick + Spin + Stance</button>
   
-  <button id="Advanced_Button">Advanced Trick</button>
-  
-  
-  <p id="Trick"></p>
-  
-  <script src="dice.js"></script>
+  <p id="Trick">Select a difficulty above</p>
   
 </body>
 </html>
@@ -31,86 +24,18 @@ var dice = {
 }
 
 
-
 //Prints dice roll to the page
 
 function printTrick(stance,spin,trick) {
-  var Dice = document.getElementById('Dice');
+  var Trick = document.getElementById('Trick');
   Trick.innerHTML = stance+" "+spin+" "+trick;
 }
 
-var Simple_button = document.getElementById('Simple_Button');
-
-Simple_Button.onclick = function() {
-  var result = dice.roll();
-  var spin = "1"
-	switch (result) {
-    case 0:
-        trick = "Ollie";
-        break;
-    case 1:
-        trick = "Kickflip";
-        break;
-    case 2:
-        trick = "Heelflip";
-        break;
-    case 3:
-        trick = "Shuv-it";
-        break;
-}
-  printTrick(trick,"","");
-};
-
-
-var Intermediate_Button = document.getElementById('Intermediate_Button');
-
-Intermediate_Button.onclick = function() {
-  var trick = dice.roll();
-  var spin = dice.roll();
-  
-
-  	switch (spin) {
-    case 0:
-        spin = "";
-        break;
-    case 1:
-		spin = "";
-        break;
-    case 2:
-        spin = "FS 180";
-        break;
-    case 3:
-        spin = "BS 180";
-        break;
-	}
-  
-	switch (trick) {
-    case 0:
-        trick = "Ollie";
-        break;
-    case 1:
-        trick = "Kickflip";
-        break;
-    case 2:
-        trick = "Heelflip";
-        break;
-    case 3:
-        trick = "Shuv-it";
-        break;
-	}
-	
-
-  printTrick(spin,trick,"");
-};
-
-
-var Advanced_Button = document.getElementById('Advanced_Button');
-
-Advanced_Button.onclick = function() {
+function GetTrick(difficulty) {
   var trick = dice.roll();
   var spin = dice.roll();
   var stance = dice.roll();
-  
+    
 	switch (stance) {
     case 0:
         stance = "";
@@ -155,9 +80,25 @@ Advanced_Button.onclick = function() {
         trick = "Shuv-it";
         break;
 	}
-	
-
-  printTrick(stance,spin,trick);
+		
+	switch (difficulty) {
+    case 0:
+		//Trick only
+        printTrick(trick,"","");
+        break;
+    case 1:
+		//Trick + stance only
+        printTrick(stance,trick,"");
+        break;
+    case 2:
+		//Trick + Spin
+        printTrick(spin,trick,"");
+        break;
+    case 3:
+		//Stance + Trick + Spin
+        printTrick(stance,spin,trick);
+        break;
+	}
 };
 
 </script>
