@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RepRan Skate Stuff</title>
+</head>
+
+<body>
+<h2>RepRan</h2>
+<table style="margin: 0px;">
+<!--
+	<tr>
+		<th>
+			<p> Stance <p>
+		</th>
+		<th>
+			<p> Rotation </P>
+		</th>
+		<th>
+			<p> Trick </p>
+		</th>
+		<th>
+			<p> Spin </p>
+		</th>
+	</tr>
+-->
+	<tr>
+		<td>
+			<p id="stance"></p>
+		</td>
+		<td>
+			<p id="boardRotation"></p>
+		</td>
+		<td>
+			<p id="trick"></p>
+		</td>
+		<td>
+			<p id="spin"></p>
+		</td>
+
+	</tr>
+</table>
+
+<input type="checkbox" id="enableStance" value="checked">Stance
+<input type="checkbox" id="enableRotation" value="enableRotation">Rotation
+<input type="checkbox" id="enableTrick" value="enableTrick">Trick
+<input type="checkbox" id="enableSpin" value="enableSpin">Spin
+<br><br><br>
+
+<script type="text/javascript" src="RepRanDice.js"></script>
+
+<input type="button" onclick="Main()" value="New Trick!">
+
+</body>
+</html>
